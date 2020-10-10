@@ -1,0 +1,14 @@
+.Home-form{
+    height: 550px;
+    width: 460px;
+    background-color: aliceblue;
+    position: absolute;
+    top: 30px;
+    left: 100px;
+}
+
+.Login-Tab{
+    margin-left: 70px;
+    margin-right: 20px;
+}
+
