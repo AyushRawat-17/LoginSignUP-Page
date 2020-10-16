@@ -1,0 +1,11 @@
+.logout{
+    height: 370px;
+    width: 750px;
+    padding: 10px;
+    margin: 95px auto;
+    text-align: center;
+}
+
+.logout-heading{
+    margin: 110px 80px 20px 80px;
+}

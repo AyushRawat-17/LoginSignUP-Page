@@ -1,0 +1,16 @@
+.covid-heading{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    align-items: stretch; 
+    justify-content: space-between;
+}
+
+.link-button{
+    text-decoration: none;
+    color: white;
+}
+
+.button{
+    margin: 10px;
+}

@@ -3,14 +3,14 @@ import './Login.css';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import axios from 'axios';
-
+import {Redirect} from 'react-router-dom';
 function Login() {
-
+    const [login,setLogin] = React.useState(false);
+    const[wrong,setWrong]=React.useState(false);
     const [state,setState]=React.useState({
       student_no:"",
       password:""
     })
-
     const Login_field = {
         margin: "5px 100px",
     }
@@ -43,10 +43,19 @@ function Login() {
       axios.post('https://ionic-server-app.herokuapp.com/trainee/login', state)
         .then(res=>{
           console.log(res);
+          if(res.data.Login === 'True'){
+            localStorage.setItem("token",res.data.token)
+            setLogin(true);
+          }
           console.log(res.data);
-          window.location = "/retrieve"
         })
+        .catch(
+          error => setWrong(true)
+        )
   
+    }
+    if(login){
+        return <Redirect to='/corona'/>          
     }
 
     return (
@@ -75,10 +84,13 @@ function Login() {
             style={Login_field}
           />
           <br/>
+          {/* <Link to='/corona'> */}
           <Button variant="contained" color="primary" type="submit" style={Login_button}>
             Login
           </Button>
+          {/* </Link> */}
         </form>
+        {wrong && <h3>Student Number or Password Incorrect</h3>}
         </div>
   
     );

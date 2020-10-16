@@ -3,8 +3,9 @@ import "./SignUp.css";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import axios from 'axios';
-
+import {Redirect} from 'react-router-dom';
 function SignUp() {
+  const[reg,setReg]=React.setState(false);
   const [state, setState] = React.useState({
     name: "",
     student_no: "",
@@ -99,11 +100,23 @@ function SignUp() {
   function handleSubmit(event){
     event.preventDefault();
     axios.post('https://ionic-server-app.herokuapp.com/trainee/register', state)
-      .then(res=>{
-        console.log(res);
-        console.log(res.data);
-        window.location = "/retrieve"
-      })
+    .then(res=>{
+      console.log(res);
+      if(res.data.status === 'Registration Successful!'){
+        setReg(true);
+        console.log('Registration Successful!')
+      }
+      console.log(res.data);
+    })
+    .catch(
+      error => alert('Duplicate User !! ')
+    )
+
+  }
+
+  if(reg)
+  {
+    return <Redirect to='/registred'/>
   }
 
   return (
