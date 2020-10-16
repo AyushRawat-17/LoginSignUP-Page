@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 function SignUp() {
-  const[reg,setReg]=React.setState(false);
+  const[reg,setReg]=React.useState(false);
   const [state, setState] = React.useState({
     name: "",
     student_no: "",
